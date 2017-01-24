@@ -7,8 +7,8 @@ package main;
 
 import java.sql.Connection;
 import java.util.concurrent.Semaphore;
-import non_repeatable_read.T1;
-import non_repeatable_read.T2;
+import phantom.T1;
+import phantom.T2;
 
 /**
  *
@@ -28,7 +28,7 @@ public class Phantom_Demo {
         T2 t2 = new T2(Connection.TRANSACTION_READ_UNCOMMITTED,semT2);
         
         //transação T1
-        T1 t1 = new T1(Connection.TRANSACTION_READ_UNCOMMITTED, semT2);
+        T1 t1 = new T1(Connection.TRANSACTION_SERIALIZABLE, semT2);
         
         //inicio das transações em condiçao de corrida
         t1.start();
